@@ -8,7 +8,9 @@ output() {
 
 output "welcome ggz docker image."
 which aptitude || apt-get -qqy install aptitude
+output "install git gcc libncurses5-dev package."
 aptitude -y update && aptitude -y install make git gcc libncurses5-dev
+output "clone shell script repo"
 cd ~ && git clone https://github.com/appleboy/Shell-Script.git
 cd Shell-Script && ./Ubuntu.sh -i docker
 # create deploy user
