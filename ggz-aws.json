@@ -20,7 +20,11 @@
     },
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
-    "ami_name": "ggz docker image {{timestamp}}"
+    "ami_name": "ggz docker image {{timestamp}}",
+    "tags": {
+      "Name": "ggz",
+      "Environment": "production"
+    }
   }],
   "provisioners": [{
       "type": "file",
