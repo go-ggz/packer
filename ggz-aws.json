@@ -36,7 +36,7 @@
     },
     {
       "type": "shell",
-      "script": "./docker.sh"
+      "script": "sudo bash ./docker.sh"
     }
   ]
 }
