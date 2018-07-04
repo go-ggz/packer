@@ -8,8 +8,10 @@ cd Shell-Script && ./Ubuntu.sh -i docker
 # create deploy user
 echo -n "create deploy user"
 useradd -m -s /bin/bash deploy
-usermode -aG docker deploy
-usermode -aG docker ubuntu
+echo -n "append docker group to deploy user"
+usermod -aG docker deploy
+echo -n "append docker group to ubuntu user"
+usermod -aG docker ubuntu
 
 echo
 echo "Install Completely!!"
