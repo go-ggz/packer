@@ -28,11 +28,6 @@
       "destination": "/home/ubuntu/"
     },
     {
-      "type": "file",
-      "source": "./docker.sh",
-      "destination": "/home/ubuntu/"
-    },
-    {
       "type": "shell",
       "inline": [
         "ls -al /home/ubuntu",
@@ -41,7 +36,8 @@
     },
     {
       "type": "shell",
-      "script": "sudo bash /home/ubuntu/docker.sh"
+      "script": "./docker.sh",
+      "execute_command": "echo 'ubuntu' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'"
     }
   ]
 }
