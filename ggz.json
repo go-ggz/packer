@@ -2,6 +2,10 @@
   "variables": {
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "ssh_bastion_host": "",
+    "ssh_bastion_port": "22",
+    "ssh_bastion_username": "",
+    "ssh_bastion_private_key_file": "",
     "region": "ap-southeast-1"
   },
   "builders": [{
@@ -20,27 +24,25 @@
     },
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
-    "ami_name": "ggz docker image {{timestamp}}",
+    "ami_name": "ggz-docker-image-{{isotime | clean_ami_name}}",
     "tags": {
       "Name": "ggz",
       "Environment": "production"
-    }
+    },
+    "communicator": "ssh",
+    "ssh_bastion_host": "{{user `ssh_bastion_host`}}",
+    "ssh_bastion_port": "{{user `ssh_bastion_port`}}",
+    "ssh_bastion_username": "{{user `ssh_bastion_username`}}",
+    "ssh_bastion_private_key_file": "{{user `ssh_bastion_private_key_file`}}"
   }],
   "provisioners": [{
       "type": "file",
-      "source": "./welcome.txt",
+      "source": "{{template_dir}}/welcome.txt",
       "destination": "/home/ubuntu/"
     },
     {
       "type": "shell",
-      "inline": [
-        "ls -al /home/ubuntu",
-        "cat /home/ubuntu/welcome.txt"
-      ]
-    },
-    {
-      "type": "shell",
-      "script": "./docker.sh",
+      "script": "{{template_dir}}/docker.sh",
       "execute_command": "echo 'ubuntu' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'"
     }
   ]

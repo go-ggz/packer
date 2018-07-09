@@ -12,9 +12,13 @@ output "welcome ggz docker image."
 which aptitude || apt-get -qqy install aptitude
 output "install git gcc libncurses5-dev package."
 aptitude -y update && aptitude -y install make git gcc libncurses5-dev
-output "clone shell script repo"
-cd ~ && git clone https://github.com/appleboy/Shell-Script.git
-cd Shell-Script && ./Ubuntu.sh -i docker
+output "Install docker daemon"
+wget -qO- https://get.docker.com/ | sh
+output "Install docker compose"
+curl -L "https://github.com/docker/compose/releases/download/1.21.1/docker-compose-$(uname -s)-$(uname -m)" > /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+output "Show docker-compose version"
+docker-compose --version
 # create deploy user
 output "create deploy user"
 useradd -m -s /bin/bash deploy
