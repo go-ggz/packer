@@ -14,5 +14,6 @@ $ packer validate ggz-aws.json
 $ packer build \
   -var 'aws_access_key=YOUR ACCESS KEY' \
   -var 'aws_secret_key=YOUR SECRET KEY' \
+  -var 'region=ap-southeast-1' \
   ggz-aws.json
 ```
