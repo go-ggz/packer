@@ -1,5 +1,7 @@
 # ggz-packer
 
+[![Build Status](http://drone.wu-boy.com/api/badges/go-ggz/packer/status.svg)](http://drone.wu-boy.com/go-ggz/packer)
+
 Build Automated Machine Images
 
 ## validate json file
