@@ -1,0 +1,15 @@
+pipeline:
+  packer:
+    image: appleboy/drone-packer
+    pull: true
+    template: ggz.json
+    actions:
+      - validate
+      - build
+
+  discord:
+    image: appleboy/drone-discord
+    pull: true
+    secrets: [ discord_webhook_id, discord_webhook_token ]
+    when:
+      status: [ success, failure ]
