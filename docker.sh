@@ -15,7 +15,7 @@ aptitude -y update && aptitude -y install make git gcc libncurses5-dev mosh
 output "Install docker daemon"
 wget -qO- https://get.docker.com/ | sh
 output "Install docker compose"
-curl -L "https://github.com/docker/compose/releases/download/1.21.1/docker-compose-$(uname -s)-$(uname -m)" > /usr/local/bin/docker-compose
+curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 output "Show docker-compose version"
 docker-compose --version
