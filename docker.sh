@@ -11,7 +11,7 @@ output() {
 output "welcome ggz docker image."
 which aptitude || apt-get -qqy install aptitude
 output "install git gcc libncurses5-dev package."
-aptitude -y update && aptitude -y install make git gcc libncurses5-dev
+aptitude -y update && aptitude -y install make git gcc libncurses5-dev mosh
 output "Install docker daemon"
 wget -qO- https://get.docker.com/ | sh
 output "Install docker compose"
